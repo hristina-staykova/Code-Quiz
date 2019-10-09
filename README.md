@@ -1,2 +1,2 @@
 # Code-Quiz
-5th week @ Coding Bootcamp ESMT Berlin
+ 3rd big assignment, homework, 5th week @ Coding Bootcamp ESMT Berlin
