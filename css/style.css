@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 10px;
+  color: #1f1d1e;
 }
 
 div {
@@ -10,16 +11,20 @@ div {
 }
 
 button {
-  background-color: dodgerblue;
+  background-color: #f0eeef;
+  border-style: solid;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #1f1d1e;
 }
 
 button:hover {
-  background-color: cornflowerblue;
+  background-color: #d3d1d2;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: #1f1d1e;
 }
 
 #timer {
@@ -29,4 +34,17 @@ a {
 
 .dispq {
   text-align: justify;
+}
+
+.choices {
+  background-color: #f0eeef;
+  width: 25%;
+  font-weight: bold;
+  border-style: solid;
+  border-color: #f0eeef;
+  border-radius: 5px;
+}
+
+.choices:hover {
+  background-color: #d3d1d2;
 }
