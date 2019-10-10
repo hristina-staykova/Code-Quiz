@@ -9,7 +9,24 @@ div {
   text-align: center;
 }
 
+button {
+  background-color: dodgerblue;
+}
+
+button:hover {
+  background-color: cornflowerblue;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
 #timer {
   float: right;
   margin: 0;
+}
+
+.dispq {
+  text-align: justify;
 }
