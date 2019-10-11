@@ -14,8 +14,6 @@ document.querySelector(".alldone").style.display = "none";
 
 startButton.addEventListener("click", startQuestions);
 
-// document.querySelector(".list").textContent = null;
-
 function countdown() {
   var secondsLeft = 5;
   var timer = setInterval(myTimer, 1000);
@@ -24,6 +22,8 @@ function countdown() {
     secondsLeft--;
     secondsEl.textContent = secondsLeft;
     if (secondsLeft === 0) {
+      document.querySelector(".dispq").style.display = "none";
+      document.querySelector(".alldone").style.display = "inherit";
       console.log("Game over");
       clearInterval(timer);
     }
