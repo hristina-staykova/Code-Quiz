@@ -40,13 +40,15 @@ a {
   text-align: justify;
 }
 
-.choices {
+li {
+  list-style-position: inside;
   background-color: #f0eeef;
   width: 25%;
   font-weight: bold;
   border-style: solid;
   border-color: #f0eeef;
   border-radius: 5px;
+  margin: 5px;
 }
 
 .choices:hover {
