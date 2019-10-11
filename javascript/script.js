@@ -1,6 +1,6 @@
-var startButton = document.querySelector("#startquiz");
-var nhsButton = document.querySelector("#highscores");
-var secondsEl = document.querySelector("#seconds");
+var startButton = document.getElementById("startquiz");
+var nhsButton = document.getElementById("highscores");
+var secondsEl = document.getElementById("seconds");
 var question = document.getElementById("question");
 var answerEl1 = document.getElementById("answer1");
 var answerEl2 = document.getElementById("answer2");
@@ -13,22 +13,6 @@ document.querySelector(".dispq").style.display = "none";
 document.querySelector(".alldone").style.display = "none";
 
 startButton.addEventListener("click", startQuestions);
-
-function countdown() {
-  var secondsLeft = 5;
-  var timer = setInterval(myTimer, 1000);
-
-  function myTimer() {
-    secondsLeft--;
-    secondsEl.textContent = secondsLeft;
-    if (secondsLeft === 0) {
-      document.querySelector(".dispq").style.display = "none";
-      document.querySelector(".alldone").style.display = "inherit";
-      console.log("Game over");
-      clearInterval(timer);
-    }
-  }
-}
 
 function startQuestions() {
   document.querySelector(".dispq").style.display = "inherit";
@@ -61,26 +45,29 @@ function startQuestions() {
       i++;
     }
   }
-
-  // displaying the object - question - choices, answer and text content of the html file - works
-  // for (i = 0; i < questions[0].choices.length; i++) {
-  //   console.log(questions[0].choices[i]);
-  //   console.log(questions[0].answer);
-  //   console.log(choices[0].textContent);
-  // }
 }
 
-// function saveHighscore() {
-//   var newHighscore = document.querySelector("#highscores");
+function countdown() {
+  var secondsLeft = 5;
+  var timer = setInterval(myTimer, 1000);
 
-//   var initialsInput = document.querySelector("#initials");
-//   var emailInput = document.querySelector("#score");
+  function myTimer() {
+    secondsLeft--;
+    secondsEl.textContent = secondsLeft;
+    if (secondsLeft === 0) {
+      document.querySelector(".dispq").style.display = "none";
+      document.querySelector(".alldone").style.display = "inherit";
+      console.log("Game over");
+      clearInterval(timer);
+    }
+  }
+}
 
-//   initialsInput = newHighscore.value;
-//   localStorage.setItem("name", initialsInput);
-//   console.log(initialsInput);
-//   console.log(emailInput.textContent);
-//   //    or seconds left?
-// }
-
-// saveHighscore();
+// submit new highscore and save it to localStorage
+nhsButton.addEventListener("click", function(event) {
+  event.preventDefault();
+  var score = document.getElementById("score").textContent;
+  var initials = document.getElementById("initials").value;
+  localStorage.setItem("name", initials);
+  localStorage.setItem("score", score);
+});
