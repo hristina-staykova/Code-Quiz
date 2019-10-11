@@ -1,38 +1,34 @@
-// var secondsEl = document.querySelector("seconds");
-// var secondsLeft = 5;
+var startButton = document.querySelector("#startquiz");
+var nhsButton = document.querySelector("#highscores");
+var secondsEl = document.querySelector("#seconds");
 
-// var timer = setInterval(myTimer, 1000);
+// document.querySelector(".alldone").textContent = null;
+startButton.addEventListener("click", startQuestions);
 
-// function myTimer() {
-//   secondsLeft--;
-//   console.log(secondsLeft);
-//   //   secondsEl.textContent = secondsLeft;
-//   if (secondsLeft === 0) {
-//     console.log("Game over");
-//     clearInterval(timer);
-//   }
-// }
+nhsButton.addEventListener("click", simple);
 
-// myTimer();
+function simple() {
+  console.log("helo");
+}
 
-var secondsEl = document.getElementById("seconds");
-var secondsLeft = 5;
+function countdown() {
+  var secondsLeft = 5;
+  var timer = setInterval(myTimer, 1000);
 
-function setTime() {
-  var timerInterval = setInterval(timeFn, 1000);
-  function timeFn() {
+  function myTimer() {
     secondsLeft--;
     secondsEl.textContent = secondsLeft;
-
     if (secondsLeft === 0) {
-      clearInterval(timerInterval);
+      console.log("Game over");
+      clearInterval(timer);
     }
   }
 }
 
-setTime();
-
 function startQuestions() {
+  countdown();
+  document.querySelector(".start").textContent = null;
+
   var question = document.getElementById("question");
   var answerEl1 = document.getElementById("answer1");
   var answerEl2 = document.getElementById("answer2");
@@ -48,4 +44,19 @@ function startQuestions() {
   }
 }
 
-startQuestions();
+// function saveHighscore() {
+//   var newHighscore = document.querySelector("#highscores");
+
+//   var initialsInput = document.querySelector("#initials");
+//   var emailInput = document.querySelector("#score");
+
+//   initialsInput = newHighscore.value;
+//   localStorage.setItem("name", initialsInput);
+//   console.log(initialsInput);
+//   console.log(emailInput.textContent);
+//   //    or seconds left?
+// }
+
+// saveHighscore();
+
+// // Showing the questions and answering

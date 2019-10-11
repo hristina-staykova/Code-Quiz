@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <a href="highscores.html" id="highscores">View Highscores</a>
+      <a href="highscores.html">View Highscores</a>
       <p id="timer">Time: <span id="seconds"> 0</span></p>
     </header>
 
@@ -20,7 +20,7 @@
         limit. Keep in mind that incorrect answer will penalize your scoreTime
         by 10 seconds!
       </p>
-      <button type="button" id="startbutton">Start Quiz</button>
+      <button type="button" id="startquiz">Start Quiz</button>
     </div>
 
     <div class="dispq">
@@ -31,16 +31,23 @@
       <p class="choices" id="answer4"></p>
     </div>
 
-    <div>
+    <div class="alldone">
       <h1>All done!</h1>
       <p>Your final score is: <span id="score">equal to seconds left</span></p>
       <form action="highscores.html" method="get">
-        Enter your name:<input type="text" /><br /><br />
-        <button type="submit">Submit</button>
+        Enter your name:<input
+          type="text"
+          name="initials"
+          id="initials"
+        /><br /><br />
+        <button type="submit" onsubmit="saveHighscore()" id="highscores">
+          Submit
+        </button>
       </form>
     </div>
 
     <script src="javascript/questions.js"></script>
+
     <script src="javascript/script.js"></script>
 
     <script></script>
