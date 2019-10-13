@@ -1,9 +1,11 @@
 var resetButton = document.getElementById("reset");
 var displScores = document.getElementById("newscore");
 
+// but the reset button doesn't clear the page.... only the localStorage
 resetButton.addEventListener("click", resetFn);
 function resetFn() {
   localStorage.clear();
+  $(".newscore").text(null);
 }
 
 // array of objects for the localStorage? every new entry to be pushed in the array and then displayed element by element
@@ -22,10 +24,9 @@ function dispHighscores() {
   if (name && score === null) {
     return;
   }
+  $(".newscore").text(name + " " + score);
 
-  document.getElementById("name").textContent = name;
-  document.getElementById("score").textContent = score;
+  // document.getElementById("name").textContent = name + score;
 }
-// but the reset button doesn't clear the page.... only the localStorage
 
 dispHighscores();
