@@ -16,7 +16,7 @@ startButton.addEventListener("click", startQuestions);
 
 function startQuestions() {
   document.querySelector(".dispq").style.display = "inherit";
-  // countdown();
+  countdown();
   document.querySelector(".start").textContent = null;
   var i = 0;
   var correct = questions[i].answer;
@@ -26,26 +26,23 @@ function startQuestions() {
   answerEl3.textContent = questions[i].choices[2];
   answerEl4.textContent = questions[i].choices[3];
 
-  console.log(answerEl1.textContent, correct);
-
-  // event listeners work (listening):
   answerEl1.addEventListener("click", function() {
-    checkFunction(answerEl1, correct);
+    checkAnswer(answerEl1, correct);
   });
   answerEl2.addEventListener("click", function() {
-    checkFunction(answerEl2, correct);
+    checkAnswer(answerEl2, correct);
   });
   answerEl3.addEventListener("click", function() {
-    checkFunction(answerEl3, correct);
+    checkAnswer(answerEl3, correct);
   });
   answerEl4.addEventListener("click", function() {
-    checkFunction(answerEl4, correct);
+    checkAnswer(answerEl4, correct);
   });
 
-  // how to check the answer? how to change to the next question?
+  // how to change to the next question?
 }
 
-function checkFunction(element, correct) {
+function checkAnswer(element, correct) {
   if (element.textContent === correct) {
     displayMsg("Right");
   } else {
@@ -54,9 +51,17 @@ function checkFunction(element, correct) {
   }
 }
 
+function displayMsg(messageContent) {
+  var container = document.querySelector(".dispq");
+  var message = document.createElement("p");
+  message.style.fontStyle = "italic";
+  message.textContent = messageContent;
+  container.appendChild(message);
+}
+
 function countdown() {
   var secondsLeft = 5;
-
+  var timer = setInterval(myTimer, 1000);
   function myTimer() {
     secondsLeft--;
     secondsEl.textContent = secondsLeft;
@@ -77,11 +82,3 @@ nhsButton.addEventListener("click", function(event) {
   localStorage.setItem("name", initials);
   localStorage.setItem("score", score);
 });
-
-function displayMsg(messageContent) {
-  var container = document.querySelector(".dispq");
-  var message = document.createElement("p");
-  message.style.fontStyle = "italic";
-  message.textContent = messageContent;
-  container.appendChild(message);
-}
