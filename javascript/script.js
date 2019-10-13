@@ -28,11 +28,19 @@ function startQuestions() {
 
   console.log(answerEl1.textContent, correct);
 
-  // event listeners works (listening):
-  answerEl1.addEventListener("click", checkFunction);
-  answerEl2.addEventListener("click", checkFunction);
-  answerEl3.addEventListener("click", checkFunction);
-  answerEl4.addEventListener("click", checkFunction);
+  // event listeners work (listening):
+  answerEl1.addEventListener("click", function() {
+    checkFunction(answerEl1, correct);
+  });
+  answerEl2.addEventListener("click", function() {
+    checkFunction(answerEl2, correct);
+  });
+  answerEl3.addEventListener("click", function() {
+    checkFunction(answerEl3, correct);
+  });
+  answerEl4.addEventListener("click", function() {
+    checkFunction(answerEl4, correct);
+  });
 
   // how to check the answer? how to change to the next question?
 }
@@ -48,7 +56,6 @@ function checkFunction(element, correct) {
 
 function countdown() {
   var secondsLeft = 5;
-  var timer = setInterval(myTimer, 1000);
 
   function myTimer() {
     secondsLeft--;
