@@ -16,7 +16,7 @@ startButton.addEventListener("click", startQuestions);
 
 function startQuestions() {
   document.querySelector(".dispq").style.display = "inherit";
-  countdown();
+  // countdown();
   document.querySelector(".start").textContent = null;
   var i = 0;
   var correct = questions[i].answer;
@@ -35,15 +35,14 @@ function startQuestions() {
   answerEl4.addEventListener("click", checkFunction);
 
   // how to check the answer? how to change to the next question?
-  function checkFunction() {
-    if (answerEl3.textContent === correct) {
-      console.log("yes");
-      i++;
-    } else {
-      // secondsLeft = secondsLeft - 10;
-      console.log("no");
-      i++;
-    }
+}
+
+function checkFunction(element, correct) {
+  if (element.textContent === correct) {
+    displayMsg("Right");
+  } else {
+    // secondsLeft = secondsLeft - 10;
+    displayMsg("Wrong");
   }
 }
 
@@ -71,3 +70,11 @@ nhsButton.addEventListener("click", function(event) {
   localStorage.setItem("name", initials);
   localStorage.setItem("score", score);
 });
+
+function displayMsg(messageContent) {
+  var container = document.querySelector(".dispq");
+  var message = document.createElement("p");
+  message.style.fontStyle = "italic";
+  message.textContent = messageContent;
+  container.appendChild(message);
+}
