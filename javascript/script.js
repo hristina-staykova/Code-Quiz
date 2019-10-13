@@ -8,6 +8,7 @@ var answerEl3 = document.getElementById("answer3");
 var answerEl4 = document.getElementById("answer4");
 var container = document.querySelector(".dispq");
 var message = document.createElement("p");
+var STORAGE_KEY = "newscore";
 var secondsLeft = 75;
 var timer;
 var i = 0;
@@ -82,23 +83,25 @@ function countdown() {
 
 function endQuiz() {
   clearInterval(timer);
+  secondsEl.textContent = secondsLeft;
   document.querySelector(".dispq").style.display = "none";
   document.querySelector(".alldone").style.display = "inherit";
-  console.log(secondsLeft);
+  document.querySelector("#score").textContent = secondsLeft;
 }
 
 // submit new highscore and save it to localStorage
 nhsButton.addEventListener("click", function(event) {
   event.preventDefault();
+  var oldScore = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  if (oldScore === null) {
+    oldScore = Array();
+  }
   var score = document.getElementById("score").textContent;
   var initials = document.getElementById("initials").value.trim();
   var newscore = {
     name: initials,
     score: score
   };
-  console.log(newscore);
-  localStorage.setItem("newscore", JSON.stringify(newscore));
-
-  // localStorage.setItem("name", initials);
-  // localStorage.setItem("score", score);
+  oldScore.push(newscore);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(oldScore));
 });
