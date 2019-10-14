@@ -9,7 +9,7 @@ var answerEl4 = document.getElementById("answer4");
 var container = document.querySelector(".dispq");
 var message = document.createElement("p");
 var storageKey = "newscore";
-var secondsLeft = 50;
+var secondsLeft = 75;
 var timer;
 var i = 0;
 var correctAudio = new Audio("assets/correct.wav");
