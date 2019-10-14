@@ -1,14 +1,14 @@
 var resetButton = document.getElementById("reset");
 var displScores = document.getElementById("display");
 
-// but the reset button doesn't clear the page.... only the localStorage
+// resets the values in localStorage & page display
 resetButton.addEventListener("click", resetFn);
 function resetFn() {
   localStorage.clear();
   $("#display").text(null);
 }
 
-// working, displaying the values from the localStorage
+// displaying the values from the localStorage
 function dispHighscores() {
   var newscore = JSON.parse(localStorage.getItem("newscore"));
   if (name && score === null) {

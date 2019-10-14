@@ -8,12 +8,14 @@ var answerEl3 = document.getElementById("answer3");
 var answerEl4 = document.getElementById("answer4");
 var container = document.querySelector(".dispq");
 var message = document.createElement("p");
-var STORAGE_KEY = "newscore";
-var secondsLeft = 75;
+var storageKey = "newscore";
+var secondsLeft = 50;
 var timer;
 var i = 0;
+var correctAudio = new Audio("assets/correct.wav");
+var wrongAudio = new Audio("assets/incorrect.mp3");
 
-// to hide these elements, which to be showed later when needed, below in the code
+// hiding elements, which to be showed later when needed, below in the code
 document.querySelector(".dispq").style.display = "none";
 document.querySelector(".alldone").style.display = "none";
 
@@ -50,9 +52,16 @@ function checkAnswer(element) {
   correct = questions[i].answer;
   if (element.textContent === correct) {
     displayMsg("Right");
+    correctAudio.play();
   } else {
     secondsLeft = secondsLeft - 10;
     displayMsg("Wrong");
+    wrongAudio.play();
+    if (secondsLeft <= 0) {
+      secondsEl.textContent = 0;
+      secondsLeft = 0;
+      endQuiz();
+    }
   }
   i++;
   if (i === questions.length) {
@@ -66,6 +75,9 @@ function displayMsg(messageContent) {
   message.style.fontStyle = "italic";
   message.textContent = messageContent;
   container.appendChild(message);
+  setTimeout(function() {
+    message.textContent = null;
+  }, 200);
 }
 
 function countdown() {
@@ -74,10 +86,11 @@ function countdown() {
   function myTimer() {
     secondsLeft--;
     secondsEl.textContent = secondsLeft;
-    if (secondsLeft <= 0) {
-      secondsEl.textContent = 0;
-      endQuiz();
-    }
+    // if (secondsLeft <= 0) {
+    //   secondsEl.textContent = 0;
+    //   secondsLeft = 0;
+    //   endQuiz();
+    // }
   }
 }
 
@@ -92,7 +105,7 @@ function endQuiz() {
 // submit new highscore and save it to localStorage
 nhsButton.addEventListener("click", function(event) {
   event.preventDefault();
-  var oldScore = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  var oldScore = JSON.parse(localStorage.getItem(storageKey));
   if (oldScore === null) {
     oldScore = Array();
   }
@@ -103,5 +116,5 @@ nhsButton.addEventListener("click", function(event) {
     score: score
   };
   oldScore.push(newscore);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(oldScore));
+  localStorage.setItem(storageKey, JSON.stringify(oldScore));
 });
